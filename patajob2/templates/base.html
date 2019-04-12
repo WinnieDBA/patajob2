@@ -1,0 +1,62 @@
+{% extends "bootstrap/base.html" %}
+{%block title%}{%endblock title%}
+
+
+{% block navbar %}
+<div class="navbar navbar-default">
+  <div class="container-fluid">
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">PataJob</a>
+    </div>
+
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+{#      <ul class="nav navbar-nav">#}
+{##}
+{#      </ul>#}
+        {% if current_user.is_authenticated %}
+
+            <ul class="nav navbar-nav navbar-right">
+            <li><a href="{{ url_for('account') }}">Account</a></li>
+            <li><a href="{{ url_for('logout' )}}">Logout</a></li>
+            </ul>
+        {% else %}
+            <ul  class="nav navbar-nav navbar-right">
+                <li><a href="{{ url_for('register') }}">Register</a></li>
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+            </ul>
+        {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock navbar %}
+
+{%block content %}
+    <div class="container"
+    <main role = "main">
+    <div class="col-md-8">
+        {% with  messages = get_flashed(with_categories=true) %}
+            {% if messages %}
+               {% for category,message in messages %}
+            <div class="alert alert-{{ category }}">
+            {{ message }}
+            </div>
+             {%endfor  %}
+            {% endif %}
+        {% endwith %}
+    </div>
+    </div>
+    </main>
+    </div>
+
+
+{%endblock content %}

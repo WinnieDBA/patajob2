@@ -1,0 +1,116 @@
+{%extends 'base.html'%}
+
+{%block title%}
+{{title}}
+{%endblock title%}
+
+
+{%block content %}
+    <div class="container">
+    <img src="{{image_file}}" alt="" class="img-circle"><br>
+    <strong>Full names</strong> {{current_user.full_names}}<br>
+   <strong> Email </strong> {{current_user.email}}
+
+    <form method="POST" action="{{url_for('account')}}" enctype="multipart/form-data">
+			{{form.hidden_tag()}}
+			<fieldset class="form-group">
+				<legend class="border-bottom mb-4">Join today</legend>
+
+				   <div class="form-group">
+				   		{{form.full_names.label(class="form-control-label")}}
+                        {% if form.full_names.errors%}
+                        {{form.full_names(class="form-control form-control-lg is-valid")}}
+                           <div class="invalid-feedback">
+                               {% for error in form.full_names.errors %}
+                               <span>{{ error }}</span>
+                               {% endfor %}
+                           </div>
+                        {% else %}
+                        {{ form.full_names(class="form-control form-control-lg") }}
+                   {% endif %}
+				   </div>
+				   <div class="form-group">
+				   		{{form.email.label(class="form-control-label")}}
+                        {% if form.email.errors%}
+                        {{form.email(class="form-control form-control-lg is-valid")}}
+                           <div class="invalid-feedback">
+                               {% for error in form.email.errors %}
+                               <span>{{ error }}</span>
+                               {% endfor %}
+                           </div>
+                        {% else %}
+                        {{ form.email(class="form-control form-control-lg") }}
+                        {% endif %}
+				   </div>
+                    <div class="form-group">
+				   		{{form.linkedin.label(class="form-control-label")}}
+                        {% if form.linkedin.errors%}
+                        {{form.linkedin(class="form-control form-control-lg is-valid")}}
+                           <div class="invalid-feedback">
+                               {% for error in form.linkedin.errors %}
+                               <span>{{ error }}</span>
+                               {% endfor %}
+                           </div>
+                        {% else %}
+                        {{ form.linkedin(class="form-control form-control-lg") }}
+                        {% endif %}
+				   </div>
+                     <div class="form-group">
+				   		{{form.twitter.label(class="form-control-label")}}
+                        {% if form.twitter.errors%}
+                        {{form.twitter(class="form-control form-control-lg is-valid")}}
+                           <div class="invalid-feedback">
+                               {% for error in form.twitter.errors %}
+                               <span>{{ error }}</span>
+                               {% endfor %}
+                           </div>
+                        {% else %}
+                        {{ form.twitter(class="form-control form-control-lg") }}
+                        {% endif %}
+				   </div>
+                    <div class="form-group">
+				   		{{form.fb.label(class="form-control-label")}}
+                        {% if form.fb.errors%}
+                        {{form.fb(class="form-control form-control-lg is-valid")}}
+                           <div class="invalid-feedback">
+                               {% for error in form.fb.errors %}
+                               <span>{{ error }}</span>
+                               {% endfor %}
+                           </div>
+                        {% else %}
+                        {{ form.fb(class="form-control form-control-lg") }}
+                        {% endif %}
+				   </div>
+				   <div class="form-group">
+				   		{{form.image.label(class="form-control-label")}}
+                        {% if form.image.errors%}
+                        {{form.image(class="form-control form-control-lg is-valid")}}
+                           <div class="invalid-feedback">
+                               {% for error in form.image.errors %}
+                               <span>{{ error }}</span>
+                               {% endfor %}
+                           </div>
+                        {% else %}
+                        {{ form.image(class="form-control form-control-lg") }}
+                        {% endif %}
+				   </div>
+{#				   <div class="form-group">#}
+{#				   		{{form.confirm.label(class="form-control-label")}}#}
+{#                        {% if form.confirm.errors%}#}
+{#                        {{form.confirm(class="form-control form-control-lg is-valid")}}#}
+{#                           <div class="invalid-feedback">#}
+{#                               {% for error in form.confirm.errors %}#}
+{#                               <span>{{ error }}</span>#}
+{#                               {% endfor %}#}
+{#                           </div>#}
+{#                        {% else %}#}
+{#                        {{ form.confirm(class="form-control form-control-lg") }}#}
+{#                   {% endif %}#}
+{#				   </div>#}
+			</fieldset>
+			<div class="form-group">
+				  {{form.submit(class="btn btn-outline-info")}}
+			</div>
+	</form>
+    </div>
+{% endblock content %}
